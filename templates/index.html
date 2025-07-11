@@ -1,0 +1,57 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Matcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Repeating Calendar Matcher</h1>
+        <form method="POST">
+            <input type="number" name="year" placeholder="Enter a year (e.g. 2025)" required>
+            <button type="submit">Find Matches</button>
+        </form>
+        
+        {% if year %}
+            <h2>Matching years for {{ year }}:</h2>
+            <ul>
+                {% for y in matches %}
+                    <li>{{ y }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Matcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Repeating Calendar Matcher</h1>
+        <form method="POST">
+            <input type="number" name="year" placeholder="Enter a year (e.g. 2025)" required>
+            <button type="submit">Find Matches</button>
+        </form>
+
+        {% if year %}
+            <h2>Matching years for {{ year }}:</h2>
+            <form method="POST" action="/compare">
+                <ul>
+                    {% for y in matches %}
+                        <li>
+                            <input type="checkbox" name="selected_years" value="{{ y }}"> {{ y }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="submit">Compare Selected Calendars</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
+

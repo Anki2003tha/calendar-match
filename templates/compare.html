@@ -1,0 +1,122 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Comparison</title>
+    <style>
+        .calendar-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .calendar {
+            font-family: monospace;
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Year Calendar Comparison</h1>
+        <div class="calendar-container">
+            {% for year, cal in calendars.items() %}
+                <div class="calendar">
+                    <h3>{{ year }}</h3>
+                    <pre>{{ cal|safe }}</pre>
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+        <a href="/">← Back to Home</a>
+    </div>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        .calendar-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .calendar {
+            font-family: monospace;
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: fit-content;
+            max-width: 350px;
+            overflow-x: auto;
+        }
+
+        .disaster-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Year Calendar Comparison</h1>
+
+    <div class="calendar-container">
+        {% for year, cal in calendars.items() %}
+            <div class="calendar">
+                <h3>{{ year }}</h3>
+                <pre>{{ cal|safe }}</pre>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="disaster-section">
+        <h2>Disasters in Selected Years (from Wikipedia)</h2>
+        {% for year, summary in disaster_summary.items() %}
+            <h3>{{ year }}</h3>
+            <p>{{ summary }}</p>
+        {% endfor %}
+    </div>
+
+    <a href="/">← Back to Home</a>
+
+</body>
+</html>
